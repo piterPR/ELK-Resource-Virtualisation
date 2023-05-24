@@ -1,11 +1,3 @@
-provider "aws" {
- access_key = var.aws_access_key
- secret_key = "${var.aws_secret_key}"
- token = "${var.aws_session_token}"
- region = "${var.aws_region}"
-}
-
-
 resource "aws_key_pair" "elk_auth" {
   key_name   = var.aws_key_name
   public_key = file(var.aws_public_key_path)
