@@ -47,7 +47,7 @@ resource "aws_instance" "elasticsearch" {
   key_name             = var.aws_key_name
   security_groups      = [module.security.elasticsearch_sc_id]
   subnet_id            = module.network.elk_private_subnet_id
-  iam_instance_profile = module.iam.es_iam_id
+
 
   ebs_block_device {
     device_name = "/dev/sdb"
