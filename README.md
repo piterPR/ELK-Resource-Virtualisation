@@ -9,5 +9,3 @@ aws_session_token="xxxxx"
 aws_region="xxxxx"
 aws_key_name="xxxxx"
 aws_public_key_path="xxxxx"
-
-[ELK]: https://www.elastic.co/
