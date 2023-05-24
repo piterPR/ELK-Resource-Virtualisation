@@ -48,14 +48,6 @@ resource "aws_instance" "elasticsearch" {
   security_groups      = [module.security.elasticsearch_sc_id]
   subnet_id            = module.network.elk_private_subnet_id
 
-
-  ebs_block_device {
-    device_name = "/dev/sdb"
-    volume_type = "io2"
-    volume_size = "20"
-    iops        = "500"
-  }
-
   user_data = templatefile(
     "${path.module}/user_data/init_esearch.tpl",
     {
@@ -76,13 +68,6 @@ resource "aws_instance" "logstash" {
   security_groups = [module.security.esearch_sc_id]
   subnet_id       = module.network.elk_private_subnet_id
 
-  ebs_block_device {
-    device_name = "/dev/sdb"
-    volume_type = "io2"
-    volume_size = "20"
-    iops        = "500"
-  }
-
   user_data = templatefile(
     "${path.module}/user_data/init_logstash.tpl",
     {
@@ -101,13 +86,6 @@ resource "aws_instance" "kibana" {
   key_name        = var.aws_key_name
   security_groups = [module.security.elk_sc_id]
   subnet_id       = module.network.elk_public_subnet_id
-
-  ebs_block_device {
-    device_name = "/dev/sdb"
-    volume_type = "io1"
-    volume_size = "10"
-    iops        = "500"
-  }
 
   user_data = templatefile(
     "${path.module}/user_data/init_kibana.tpl",
