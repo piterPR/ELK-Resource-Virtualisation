@@ -99,3 +99,22 @@ resource "aws_instance" "kibana" {
   }
 }
 
+
+resource "aws_instance" "python_api" {
+  ami             = data.aws_ami.aws_amis.id
+  instance_type   = var.elk_instance_type
+  key_name        = var.aws_key_name
+  security_groups = [module.security.elk_sc_id]
+  subnet_id       = module.network.elk_public_subnet_id
+
+  user_data = templatefile(
+    "${path.module}/user_data/init_api.tpl",
+    {
+      elasticsearch_host = aws_instance.elasticsearch.private_ip
+    }
+  )
+
+  tags = {
+    Name = "FastApi python instance"
+  }
+}
