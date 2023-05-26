@@ -27,6 +27,14 @@ heartbeat {
     type => "heartbeat"
     message => "epoch"
 }
+s3 {
+    "bucket" => "logstach-backend-app"
+    "region" => "us-east-1"
+    "additional_settings" => {
+    "force_path_style" => true
+    "follow_redirects" => false
+    }
+}
 }
 output {
 stdout {
@@ -36,6 +44,9 @@ elasticsearch {
 hosts => ["${elasticsearch_host}:9200"] # Use the internal IP of your Elasticsearch server
 # for production
 }
+
+
+
 }
 EOF
 
