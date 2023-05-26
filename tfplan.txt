@@ -52,19 +52,6 @@ Terraform will perform the following actions:
       + user_data_base64                     = (known after apply)
       + user_data_replace_on_change          = false
       + vpc_security_group_ids               = (known after apply)
-
-      + ebs_block_device {
-          + delete_on_termination = true
-          + device_name           = "/dev/sdb"
-          + encrypted             = (known after apply)
-          + iops                  = 500
-          + kms_key_id            = (known after apply)
-          + snapshot_id           = (known after apply)
-          + throughput            = (known after apply)
-          + volume_id             = (known after apply)
-          + volume_size           = 20
-          + volume_type           = "io2"
-        }
     }
 
   # aws_instance.kibana will be created

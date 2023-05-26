@@ -56,6 +56,11 @@ resource "aws_instance" "elasticsearch" {
     }
   )
 
+  ebs_block_device {
+    device_name = "/dev/sdb"
+    volume_size = "20"
+  }
+
   tags = {
     Name = "Elasticsearch instance"
   }
@@ -74,6 +79,11 @@ resource "aws_instance" "logstash" {
       elasticsearch_host = aws_instance.elasticsearch.private_ip
     }
   )
+
+  ebs_block_device {
+    device_name = "/dev/sdb"
+    volume_size = "20"
+  }
 
   tags = {
     Name = "Logstash instance"
@@ -94,6 +104,11 @@ resource "aws_instance" "kibana" {
     }
   )
 
+  ebs_block_device {
+    device_name = "/dev/sdb"
+    volume_size = "20"
+  }
+  
   tags = {
     Name = "Kibana instance"
   }
