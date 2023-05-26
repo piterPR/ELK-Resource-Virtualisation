@@ -11,6 +11,12 @@ sudo apt-get update && sudo apt-get install logstash
 sudo update-rc.d logstash defaults 97 8
 sudo service logstash start
 
+#Configure SSM for possibility to login to shell from aws console 
+
+sudo snap switch --channel=candidate amazon-ssm-agent
+sudo systemctl start snap.amazon-ssm-agent.amazon-ssm-agent.service
+sudo systemctl enable snap.amazon-ssm-agent.amazon-ssm-agent.service
+
 # Configure the logstash service
 
 cat << EOF >/tmp/logstash.conf
