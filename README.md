@@ -16,6 +16,5 @@ aws_session_token="xxxxx"
 
 aws_region="xxxxx"
 
-aws_key_name="xxxxx"
-
-aws_public_key_path="xxxxx"
+## Create your own ELK using cloudshell and terraform
+It is also possible to create your own ELK without AWS SECRET KEYS. You can clone repository directly into cloudshell and run code inside your cloud. 
